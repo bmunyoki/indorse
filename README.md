@@ -12,7 +12,7 @@ Functionality
 2. Login (/api/auth/login) - expects email and password. Returns (200): message and token
 
 NB: For the below endpoints, token must be included as a parameter in the query string e.g 
-https://endorse.ibenjaminke.com/api/profile/jdeepay?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJbmRvcnNlIGJ5IEJlbmphbWluIiwic3ViIjoiamRlZXBheUB0ZXN0LmNvbSIsImlhdCI6MTU0ODk2MjY1MywiZXhwIjoxNTQ5MTc4NjUzfQ.Lixto700aOPMPQGqzDT6abU1Cn0ZQ4bAXAD8b5nusII
+https://indorse.ibenjaminke.com/api/profile/jdeepay?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJbmRvcnNlIGJ5IEJlbmphbWluIiwic3ViIjoiamRlZXBheUB0ZXN0LmNvbSIsImlhdCI6MTU0ODk2MjY1MywiZXhwIjoxNTQ5MTc4NjUzfQ.Lixto700aOPMPQGqzDT6abU1Cn0ZQ4bAXAD8b5nusII
 
 3. Create Profile (/api/profile/create) - expects: about, school, phone, status. Returns (201): message and profile (json)
 4. Update Profile (/api/profile/update) - expects similar payload as create. Returns the same as create
