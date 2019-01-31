@@ -14,3 +14,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->post('api/auth/register', [ 'uses' => 'AuthController@register' ]);
+
+$router->post('api/auth/login', [ 'uses' => 'AuthController@login' ]);
