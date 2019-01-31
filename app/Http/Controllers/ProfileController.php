@@ -11,10 +11,6 @@ use App\Model\Profile;
 class ProfileController extends Controller{
     // Create user profile
     public function createProfile(Request $request){
-    	// $token = $request->get('token');
-    	// $payload = JWT::decode($token, env('JWT_KEY'), ['HS256']);
-    	// $token_holder = User::where('email', $payload->sub)->first();
-
     	$profile = new Profile();
     	$profile->user_id = $request->authenticatedUser->id;
     	$profile->about = $request->input('about');
@@ -49,7 +45,7 @@ class ProfileController extends Controller{
             ], 201);
     	}else{
     		return response()->json([
-                'error' => 'Error updating user profile created'
+                'error' => 'Error updating user profile.'
             ], 500);
     	}
     }

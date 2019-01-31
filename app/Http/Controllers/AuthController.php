@@ -32,16 +32,16 @@ class AuthController extends Controller{
         ]);
 
         // Check if email is in use - return error 409 for conflict
-        $email_taken = User::where('email', $this->request->input('email'))->first();
-        if ($email_taken) {
+        $emailTaken = User::where('email', $this->request->input('email'))->first();
+        if ($emailTaken) {
             return response()->json([
                 'error' => 'Email address already in use'
             ], 409);
         }
 
         // Check if username is in use - return error 409 for conflict
-        $username_taken = User::where('username', $this->request->input('username'))->first();
-        if ($username_taken) {
+        $usernameTaken = User::where('username', $this->request->input('username'))->first();
+        if ($usernameTaken) {
             return response()->json([
                 'error' => 'Username already in use'
             ], 409);
