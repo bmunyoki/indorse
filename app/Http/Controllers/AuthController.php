@@ -58,6 +58,7 @@ class AuthController extends Controller{
         if ($user->id >= 1) {
             return response()->json([
                 'message' => 'User account created',
+                'user' => $user,
                 'token' => $this->generate_token($user)
             ], 201);
         }

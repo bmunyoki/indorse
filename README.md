@@ -5,7 +5,7 @@ This is Friend finder API for Indorse evaluation by Benjamin
 Usage
 1. Clone the repository, copy .env.example to .env file and supply app_key, jwt_key and database details OR
 
-2. Fire postman or your favorite rest client and use http://indorse.ibenjaminke.com/
+2. Fire postman or your favorite rest client and use https://indorse.ibenjaminke.com/
 
 Functionality
 1. Signup (/api/auth/register) - expects: first_name, last_name, username, email, password. Returns (201): message and token.
