@@ -29,4 +29,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+
+    // A user has one profile
+    public function profile(){
+        return $this->hasOne('App\Model\Profile');
+    }
+
+    // A user has many friends
+    public function friends(){
+        return $this->hasMany('App\Model\Friend', 'friend_id');
+    }
 }

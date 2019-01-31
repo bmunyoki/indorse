@@ -20,17 +20,6 @@ class AuthController extends Controller{
 
     public function __construct(Request $request){
         $this->request = $request;
-    }
-
-    protected function generate_token(User $user) {
-        $payload = [
-            'iss' => "Indorse by Benjamin", 
-            'sub' => $user->email,
-            'iat' => time(), 
-            'exp' => (time() + 60*60*60)
-        ];
-        
-        return JWT::encode($payload, env('JWT_KEY'));
     } 
 
     public function register(Request $request){
@@ -42,20 +31,20 @@ class AuthController extends Controller{
             'password'  => 'required'
         ]);
 
-        // Check if email is in use
+        // Check if email is in use - return error 409 for conflict
         $email_taken = User::where('email', $this->request->input('email'))->first();
         if ($email_taken) {
             return response()->json([
                 'error' => 'Email address already in use'
-            ], 400);
+            ], 409);
         }
 
-        // Check if username is in use
+        // Check if username is in use - return error 409 for conflict
         $username_taken = User::where('username', $this->request->input('username'))->first();
         if ($username_taken) {
             return response()->json([
                 'error' => 'Username already in use'
-            ], 400);
+            ], 409);
         }
 
         $user = new User();
@@ -88,6 +77,17 @@ class AuthController extends Controller{
                 'token' => $this->generate_token($user)
             ], 200);
         } 
+    }
+
+    protected function generate_token(User $user) {
+        $payload = [
+            'iss' => "Indorse by Benjamin", 
+            'sub' => $user->email,
+            'iat' => time(), 
+            'exp' => (time() + 60*60*60)
+        ];
+        
+        return JWT::encode($payload, env('JWT_KEY'));
     }
     
 }
