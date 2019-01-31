@@ -68,7 +68,7 @@ class AuthController extends Controller{
         $user = User::where('email', $this->request->input('email'))->first();
         if (!$user) {
             return response()->json([
-                'error' => 'Invalid user'
+                'error' => 'Invalid user!'
             ], 400);
         }  
 
@@ -77,6 +77,10 @@ class AuthController extends Controller{
                 'message' => 'Authentication success',
                 'token' => $this->generate_token($user)
             ], 200);
+        }else{
+            return response()->json([
+                'error' => 'Invalid login!'
+            ], 403);
         } 
     }
 
